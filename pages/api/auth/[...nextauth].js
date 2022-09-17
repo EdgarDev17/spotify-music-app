@@ -1,6 +1,6 @@
 /*
     this file handle user session
-    also create and refresh user tokens
+    also it creates and refresh user tokens
 */
 
 import NextAuth from 'next-auth'
@@ -29,9 +29,9 @@ async function refreshAccToken(token) {
 		}
 	}
 }
+
 export default NextAuth({
 	// this section is for setting up authentication providers
-	// I can store this in login.jsx into an array call providers
 	providers: [
 		SpotifyProvider({
 			clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -56,7 +56,6 @@ export default NextAuth({
 		//this is the initial sign in
 		async jwt({ token, account, user }) {
 			if (account && user) {
-				console.log('JWT() - Login successful 😎')
 				return {
 					...token,
 					accessToken: account.access_token,

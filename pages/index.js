@@ -21,13 +21,14 @@ export default function Login({ providers }) {
     <>
       <div className={'container mx-auto'}>
         <h1 className={'font-bold text-xl text-center my-5'}>
-          Welcome to the band!
+          Welcome to the band, my friend!
         </h1>
-        <p className={'text-md text-center'}>
+
+        <p className={'text-md my-5 text-center'}>
           Login with your spotify account to enjoy this app!
         </p>
-        <div className={'flex justify-center my-5'}></div>
       </div>
+
       <div className={'flex justify-center flex-col mx-5 lg:mx-96'}>
         {provider}
         <div className={'my-5 mx-auto'}>
