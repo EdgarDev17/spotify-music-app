@@ -5,6 +5,8 @@ import Banner from './../../components/Banner'
 import { getArtists } from './../../lib/getArtists'
 import { getUserData } from './../../lib/getUserData'
 import Artist from './../../components/Artist'
+import {Playlist} from './../../components/Playlist'
+import { getPlaylists } from '../../lib/getPlaylists'
 
 export default function Home() {
 	const { data: session, status } = useSession()
@@ -28,12 +30,16 @@ export default function Home() {
 
 	// getting user top artists list
 	useEffect(() => {
-		if (status === 'authenticated') {
+		if (status === 'authenticated' && currentUser) {
 			getArtists(session.user.accessToken).then((artists) =>
 				setTopArtists(artists.items)
 			)
+
+			getPlaylists(session.user.accessToken, currentUser.id).then(
+				(playlists) => setPlaylists(playlists)
+			)
 		}
-	}, [status, session])
+	}, [status, session, currentUser])
 
 	function renderArtistList(artistsList) {
 		return artistsList
@@ -45,6 +51,12 @@ export default function Home() {
 					picture={artist.images[0].url}
 				/>
 			))
+	}
+
+	function renderPlaylists(playlistsParam) {
+		return playlistsParam.map((playlist) => {
+			return <Playlist key={playlist.id} name={playlist.name} cover={playlist.images[0].url} totalTracks={playlist.tracks.total}/>
+		})
 	}
 
 	if (isLogged == false) {
@@ -77,10 +89,16 @@ export default function Home() {
 						<p className='ml-5 text-white mt-16 text-lg font-semibold'>
 							My playlists
 						</p>
+						<div className='mt-5 flex justify-start items-center overflow-scroll'>
+							{loading
+								? 'Loading...'
+								: renderPlaylists(playlists)}
+						</div>
 
 						<p className='ml-5 text-white mt-16 text-lg font-semibold'>
 							My top 10 songs
 						</p>
+
 					</div>
 				</div>
 			</>
