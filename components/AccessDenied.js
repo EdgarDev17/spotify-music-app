@@ -11,7 +11,7 @@ export default function AccessDenied() {
                     sesión o crear una cuenta.
                 </p>
                 <div className={'py-5'}>
-                    <LinkButton url={'/login'} label={'Iniciar Sesión'}/>
+                    <LinkButton url={'/'} label={'Iniciar Sesión'}/>
                 </div>
             </div>
         </div>

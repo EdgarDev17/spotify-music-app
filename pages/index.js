@@ -31,14 +31,6 @@ export default function Login({ providers }) {
 
       <div className={'flex justify-center flex-col mx-5 lg:mx-96'}>
         {provider}
-        <div className={'my-5 mx-auto'}>
-          <Image
-            alt={'login image'}
-            src={'/peep-standing-25.svg'}
-            width={300}
-            height={500}
-          />
-        </div>
       </div>
     </>
   )

@@ -1,12 +1,12 @@
 import Image from 'next/image'
 
-const Artist = ({ name, picture }) => {
+const Artist = ({ name, picture,rounded }) => {
 	return (
 		<div className='mx-1'>
 			<div className='flex items-center justify-center'>
 				<Image
 					alt='Artist profile picture'
-					className='rounded-full'
+					className={rounded?'rounded-full':'rounded'}
 					width={150}
 					height={150}
 					src={picture}
