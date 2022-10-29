@@ -43,10 +43,10 @@ export default NextAuth({
 	secret: process.env.secret,
 
 	// setting up the url for each page
-	pages: {
-		signIn: 'https://spotify-music-app-profile.vercel.app/login',
-		error: 'https://spotify-music-app-profile.vercel.app/error',
-	},
+	// pages: {
+	// 	signIn: 'https://spotify-music-app-profile.vercel.app/login',
+	// 	error: 'https://spotify-music-app-profile.vercel.app/error',
+	// },
 
 	//some functions to handle sign in method and session method
 	callbacks: {
