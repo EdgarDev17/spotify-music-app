@@ -40,15 +40,12 @@ export default NextAuth({
 		}),
 	],
 
-	// this JWT has to be incripted
-	// secret: process.env.JWT,
-	secret: process.env.NEXTAUTH_SECRET,
+	secret: process.env.secret,
 
-	
 	// setting up the url for each page
 	pages: {
-		signIn: 'http://localhost:3000/login',
-		error: 'http://localhost:3000/error',
+		signIn: 'https://spotify-music-app-profile.vercel.app/login',
+		error: 'https://spotify-music-app-profile.vercel.app/error',
 	},
 
 	//some functions to handle sign in method and session method
@@ -79,14 +76,14 @@ export default NextAuth({
 			session.user.username = token.username
 			return session
 		},
-		async signIn({email, account, user, credentials}){
+		async signIn({ email, account, user, credentials }) {
 			let isAllowed = true
 
-			if(!isAllowed){
+			if (!isAllowed) {
 				return 'http://localhost:3000/login'
-			} 
+			}
 
 			return isAllowed
-		}
+		},
 	},
 })
