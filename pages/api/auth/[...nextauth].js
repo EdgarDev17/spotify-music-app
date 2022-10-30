@@ -70,13 +70,14 @@ export default NextAuth({
 			session.user.username = token.username
 			return session
 		},
+
 		async signIn({ email, account, user, credentials }) {
 			let isAllowed = true
 
 			if (!isAllowed) {
 				return 'https://spotify-music-app-profile.vercel.app'
+				// return 'http://localhost:3000/'
 			}
-
 			return isAllowed
 		},
 	},
