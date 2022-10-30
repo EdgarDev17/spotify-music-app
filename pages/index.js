@@ -1,6 +1,5 @@
 // providers:
 import { getProviders, signIn } from 'next-auth/react'
-import Image from 'next/image'
 
 export default function Login({ providers }) {
 	let provider = Object.values(providers).map((provider) => {
@@ -9,7 +8,7 @@ export default function Login({ providers }) {
 				className={'bg-green-500 text-white px-10 py-3 rounded'}
 				key={provider.name}
 				onClick={() => {
-					return signIn(provider.id, { callbackUrl: '/home' })
+					return signIn(provider.id, { callbackUrl: 'https://spotify-music-app-profile.vercel.app/home' })
 				}}
 			>
 				{provider.name}

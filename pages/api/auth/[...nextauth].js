@@ -42,12 +42,6 @@ export default NextAuth({
 
 	secret: process.env.secret,
 
-	// setting up the url for each page
-	// pages: {
-	// 	signIn: 'https://spotify-music-app-profile.vercel.app/login',
-	// 	error: 'https://spotify-music-app-profile.vercel.app/error',
-	// },
-
 	//some functions to handle sign in method and session method
 	callbacks: {
 		//this is the initial sign in
@@ -80,7 +74,7 @@ export default NextAuth({
 			let isAllowed = true
 
 			if (!isAllowed) {
-				return 'http://localhost:3000/login'
+				return 'https://spotify-music-app-profile.vercel.app'
 			}
 
 			return isAllowed
