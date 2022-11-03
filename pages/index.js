@@ -1,8 +1,15 @@
 // providers:
 import { getProviders, signIn } from 'next-auth/react'
-import Image from 'next/image'
+import Modal from '../components/modal'
+import { useState } from 'react'
 
 export default function Login({ providers }) {
+	const [showModal, setShowModal] = useState(true)
+
+	const handleToggleModal = () => {
+		setShowModal(!showModal)
+	}
+
 	let provider = Object.values(providers).map((provider) => {
 		return (
 			<button
@@ -19,19 +26,26 @@ export default function Login({ providers }) {
 
 	return (
 		<div className='bg-gray-900 w-full h-screen overflow-y-hidden flex flex-col justify-center items-center'>
+			{ showModal && <Modal onClose={handleToggleModal} /> }
 			<div className={'container mx-auto'}>
-				<h1 className={' text-white font-bold text-xl sm:text-5xl text-center sm:mb-5'}>
+				<h1
+					className={
+						' text-white font-bold text-xl sm:text-5xl text-center sm:mb-5'
+					}
+				>
 					Welcome to the band, my friend!
 				</h1>
 
-				<p className={'text-white text-sm my-5 sm:mt-10 sm:mb-10 md:text-lg text-center'}>
+				<p
+					className={
+						'text-white text-sm my-5 sm:mt-10 sm:mb-10 md:text-lg text-center'
+					}
+				>
 					Login to know about your music taste
 				</p>
 			</div>
 
-			<div className={'flex justify-center flex-col'}>
-				{provider}
-			</div>
+			<div className={'flex justify-center flex-col'}>{provider}</div>
 		</div>
 	)
 }
